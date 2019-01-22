@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://cjlucas85.github.io/projects/projects/</loc>
+    <lastmod>2019-01-21T20:30:00-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/blog/first-post/</loc>
+    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/about/</loc>
+    <lastmod>2015-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/blog/</loc>
+    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/</loc>
+    <lastmod>2019-01-21T20:30:00-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/home/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/license/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/projects/</loc>
+    <lastmod>2019-01-21T20:30:00-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/tags/writing/</loc>
+    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/categories/writing/</loc>
+    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

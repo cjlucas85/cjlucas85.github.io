@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://cjlucas85.github.io/blog/python-functional-short-circuit-evaluation/</loc>
+    <lastmod>2019-01-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cjlucas85.github.io/blog/first-post/</loc>
     <lastmod>2019-01-21T00:00:00+00:00</lastmod>
   </url>
@@ -19,7 +24,7 @@
   
   <url>
     <loc>https://cjlucas85.github.io/blog/</loc>
-    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -31,6 +36,18 @@
   <url>
     <loc>https://cjlucas85.github.io/</loc>
     <lastmod>2019-01-21T20:30:00-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/categories/development/</loc>
+    <lastmod>2019-01-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/tags/functional/</loc>
+    <lastmod>2019-01-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -49,18 +66,31 @@
   </url>
   
   <url>
-    <loc>https://cjlucas85.github.io/tags/</loc>
+    <loc>https://cjlucas85.github.io/tags/python2/</loc>
+    <lastmod>2019-01-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://cjlucas85.github.io/categories/writing/</loc>
-    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+    <loc>https://cjlucas85.github.io/tags/python3/</loc>
+    <lastmod>2019-01-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/tags/</loc>
+    <lastmod>2019-01-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://cjlucas85.github.io/tags/writing/</loc>
+    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjlucas85.github.io/categories/writing/</loc>
     <lastmod>2019-01-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

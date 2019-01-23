@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="Chad Lucas" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cjlucas85.github.io/tags/writing/" />
-<meta property="og:title" content="Writing" />
-<meta property="twitter:title" content="Writing">
+<meta property="og:url" content="https://cjlucas85.github.io/blog/python-functional-short-circuit-evaluation/" />
+<meta property="og:title" content="Python: Functional Short-circuit Evaluation" />
+<meta property="twitter:title" content="Python: Functional Short-circuit Evaluation">
 
     <meta property="og:image" content="https://cjlucas85.github.io/img/banner.png">
     <meta property="twitter:card" content="summary_large_image">
@@ -28,10 +28,10 @@
 <title>
 
 
-     Chad Lucas - Writing 
+     Chad Lucas - Python: Functional Short-circuit Evaluation 
 
 </title>
-<link rel="canonical" href="https://cjlucas85.github.io/tags/writing/">
+<link rel="canonical" href="https://cjlucas85.github.io/blog/python-functional-short-circuit-evaluation/">
 
 
 <style media="screen">
@@ -1063,8 +1063,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="https://cjlucas85.github.io/tags/writing/index.xml" rel="alternate" type="application/rss+xml" title="Chad Lucas" />
-
 
 </head>
 
@@ -1072,7 +1070,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1111,26 +1109,145 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+
+
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            <div class="posts">
-                <div class="page-heading">Posts about Writing</div>
-                <ul>
-                    
-                        <li class="post-item">
-    <span class="meta">Jan 21, 2019</span>
-    
-    <a href="https://cjlucas85.github.io/blog/first-post/"><span>First Post</span></a>
-    
-</li>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
+    
+    Python: Functional Short-circuit Evaluation
+    
+
+</div>
+
+                </div>
+                <div class="meta">
+                    <div class="date" title="Tue Jan 22 2019 00:00:00 UTC">Jan 22, 2019</div>
                     
-                </ul>
+                        
+                    
+                    
+                    <div class="reading-time middot">2 minute read</div>
+                    
+                    <div class="tags">
+                        <ul>
+                          
+                            <li class="middot"><a href="https://cjlucas85.github.io/tags/python2">python2</a> </li>
+                          
+                            <li class="middot"><a href="https://cjlucas85.github.io/tags/python3">python3</a> </li>
+                          
+                            <li class="middot"><a href="https://cjlucas85.github.io/tags/functional">functional</a> </li>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <div class="markdown">
+                
+    
+    
+
+<p>Recently, I made an interesting connection between some of Python&rsquo;s builtin functions and generators. A common pattern in a project appeared where I needed to handle an increasing number different things needed to be checked in a string with a possible variety of approaches to be made. This resulted in the following pattern:</p>
+
+<pre><code>def check1(x):
+    return x &gt; 10
+
+def check2(x):
+    return x &gt; 20
+
+def check3(x):
+    return x &gt; 30
+
+# ... LATER IN CODE ...
+
+v = int(input())
+if check1(v) and check2(v) and check3(v):
+    print(&quot;Passes all checks&quot;)
+else:
+    print(&quot;Does not pass all checks.&quot;)
+</code></pre>
+
+<p>Well, that works well for the three checks, but what if there were more?</p>
+
+<pre><code>if check1(v) and check2(v) and check3(v) and check4(v) and check5(v) and check6(v):
+</code></pre>
+
+<p>Oof, that sucks for the one line. Maybe there&rsquo;s a way to simplify it and make it easier to resuse the check functions?</p>
+
+<p>My first attempt looked a little like the following:</p>
+
+<pre><code>checks = [check1, check2, check3, check4, check5, check6]
+results = [f(v) for f in checks]
+if not False in results:
+    print(&quot;Passes all checks&quot;)
+else:
+    print(&quot;Does not pass all checks.&quot;)
+</code></pre>
+
+<p>Cool, does what I want, but wait. Is that really better? Nope! Now, all of the checks are being executed when before there was at least some <a href="https://en.wikipedia.org/wiki/Short-circuit_evaluation">short circuit evaluation</a>.</p>
+
+<p>There is a solution, fortunately! Python has two builtin functions that take iteratible objects and produces a T/F result with the short circuit evaluation. The builtin <a href="https://docs.python.org/2/library/functions.html#all">all()</a> acts as an AND between all of the iterated objects. The builtin <a href="https://docs.python.org/2/library/functions.html#any">any()</a> acts as an OR between all of the objects. We can also use list comprehension to generate a collections of T/F values.</p>
+
+<p>Since we&rsquo;re doing an AND operation, we&rsquo;ll use the <a href="https://docs.python.org/2/library/functions.html#all">all()</a> builtin function.</p>
+
+<pre><code>checks = [check1, check2, check3, check4, check5, check6]
+if all(f(v) for f in checks):
+    print(&quot;Passes all checks&quot;)
+else:
+    print(&quot;Does not pass all checks.&quot;)
+</code></pre>
+
+<p>Now it&rsquo;s shorter. It doesn&rsquo;t require funky middle steps. Oh, and it&rsquo;s easier to read: &ldquo;If all f(v) for f in checks&rdquo;. Cool.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://docs.python.org/2/library/functions.html#all">Python Builtin: all()</a></p>
+
+<p><a href="https://docs.python.org/2/library/functions.html#any">Python Builtin: any()</a></p>
+
+
+            </div>
+            
+            <br>
+            <div class="share">
+                  
+                  <a href="" class="ssk ssk-facebook"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-twitter"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-google-plus"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-linkedin"></a>
+                  
+            </div>
+            
+            
+            
+
+            
+
+            
         </div>
     </div>
 </div>
+
+
+
 <div class="footer column">
     <div class="container">
 

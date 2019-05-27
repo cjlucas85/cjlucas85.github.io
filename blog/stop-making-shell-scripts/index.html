@@ -1169,11 +1169,9 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 <p>For years, I&rsquo;ve encountered a fair amount of shell scripting being used on various projects. Often shell scripting finds its away in tasks related to build systems, automated testing, source code management and similar tasks. These are all areas which well trained Software Engineers with good intentions have deemed a suitable tool for the job. They&rsquo;re wrong. Instead of making things more streamline, a shell script will make things more unpredictable. It will not be portable. It will widen the scope of knowledge required to maintain the project. All of this at the price of little gain over a conventional programming language.</p>
 
-<p>In this article, I will demonstrate the problems encountered by shell scripts followed by alternatives.</p>
+<p>In this article, I will demonstrate problems encountered with shell scripts. I&rsquo;ll be using MS Batch File for my shell script samples; however, keep in mind that BASH, PowerShell and others have similar problems. I will also glance over some alternatives.</p>
 
-<p>I will use MS Batch File as a demonstration for problems; although, keep in mind that BASH Script, PowerShell, and others have similar problems.</p>
-
-<h1 id="syntax-errors">Syntax Errors</h1>
+<h2 id="syntax-errors">Syntax Errors</h2>
 
 <p>In a general programming language, you get a fair amount of syntax checking. This syntax checking comes with it some useful tools to addressing the offending syntax error.</p>
 
@@ -1256,7 +1254,7 @@ The syntax of the command is incorrect.
 
 <p>Unpredictable outcomes are not just a matter of syntax but also runtime errors.</p>
 
-<h1 id="runtime-errors">Runtime Errors</h1>
+<h2 id="runtime-errors">Runtime Errors</h2>
 
 <p>Modern programming languages are equiped with exception handling or other error handling mechanisms. Often these are errors which will indicate to other parts of the code that an operation could not be completed. If this failure isn&rsquo;t checked, it may even halt the program all together. When this occurs a useful text with a description of the error and a trail of function calls are listed. This is often called a stack trace. An alternative to using a stack trace is using a debugger. Debuggers typically run or run along side of the program. They give useful information about the state of the application along with errors encountered.</p>
 
@@ -1392,7 +1390,7 @@ whoops!
 </tbody>
 </table>
 
-<h1 id="portability">Portability</h1>
+<h2 id="portability">Portability</h2>
 
 <p>Portability is often a goal which is desired when needed, and it is seldom considered at the start of development. When it comes to the portability of shell scripts and interpreted programming languages, there are two concerns: which platforms is it installed on and is it available by default?</p>
 
@@ -1522,11 +1520,11 @@ whoops!
 </tbody>
 </table>
 
-<h1 id="why-do-developers-choose-shell-scripts">Why Do Developers Choose Shell Scripts?</h1>
+<h2 id="why-do-developers-choose-shell-scripts">Why Do Developers Choose Shell Scripts?</h2>
 
 <p>Before any solutions can be presented, we need to discuss what motivations developers have for using shell scripts.</p>
 
-<h2 id="mostly">Mostly</h2>
+<h3 id="mostly">Mostly</h3>
 
 <p>Simply put, developers often form shell scripts from the commands they invoke on the command line to get tasks done. The simplest solution to recreating that success and using it over and over again is to pack that into a shell script file. This is why it&rsquo;s not as simple as saying &ldquo;Use a general programming language.&rdquo;</p>
 
@@ -1580,7 +1578,7 @@ os.chdir(cwd)
 
 <p>Using shell scripting is often a path of convenience. Switching languages may provide error checking without much effort; however, propper error checking will require some careful consideration and effort.</p>
 
-<h2 id="sometimes">Sometimes</h2>
+<h3 id="sometimes">Sometimes</h3>
 
 <p>At times there isn&rsquo;t any choice in the matter.</p>
 
@@ -1590,7 +1588,7 @@ os.chdir(cwd)
 
 <p>When you can use an alternative to shell scripts; use it.</p>
 
-<h1 id="alternatives">Alternatives</h1>
+<h2 id="alternatives">Alternatives</h2>
 
 <p><strong>Python</strong> and <strong>Ruby</strong> are natural alternatives to shell scripting. Both are easy to learn, have support from a plethera of third party modules, and their communities are large. Chances are if you&rsquo;re apart of a project, there may already exist a bias toward using either one. If that&rsquo;s the case, that is the path toward replacing shell scripts from the project. Otherwise, my recommendation is to use <strong>Python</strong>. Python has slightly more reach with utilities and application development than Ruby, and the language isn&rsquo;t typecast to a single framework.</p>
 

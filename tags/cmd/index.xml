@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python3 on Chad Lucas</title>
-    <link>https://cjlucas85.github.io/tags/python3/</link>
-    <description>Recent content in python3 on Chad Lucas</description>
+    <title>cmd on Chad Lucas</title>
+    <link>https://cjlucas85.github.io/tags/cmd/</link>
+    <description>Recent content in cmd on Chad Lucas</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 27 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://cjlucas85.github.io/tags/python3/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cjlucas85.github.io/tags/cmd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       <guid>https://cjlucas85.github.io/blog/stop-creating-shell-scripts/</guid>
       <description>Shell Scripting is terrible, and you need to stop using it.
 For years, I&amp;rsquo;ve encountered a fair amount of shell scripting being used on various projects. Often shell scripting finds its away in tasks related to build systems, automated testing, source code management and similar tasks. These are all areas which well trained Software Engineers with good intentions have deemed a suitable tool for the job. They&amp;rsquo;re wrong. Instead of making things more streamline, a shell script will make things more unpredictable.</description>
-    </item>
-    
-    <item>
-      <title>Python: Functional Short-circuit Evaluation</title>
-      <link>https://cjlucas85.github.io/blog/python-functional-short-circuit-evaluation/</link>
-      <pubDate>Tue, 22 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://cjlucas85.github.io/blog/python-functional-short-circuit-evaluation/</guid>
-      <description>Recently, I made an interesting connection between some of Python&amp;rsquo;s builtin functions and generators. A common pattern in a project appeared where I needed to handle an increasing number different things needed to be checked in a string with a possible variety of approaches to be made. This resulted in the following pattern:
-def check1(x): return x &amp;gt; 10 def check2(x): return x &amp;gt; 20 def check3(x): return x &amp;gt; 30 # .</description>
     </item>
     
   </channel>

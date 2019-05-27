@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Usability on Chad Lucas</title>
+    <link>https://cjlucas85.github.io/categories/usability/</link>
+    <description>Recent content in Usability on Chad Lucas</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 26 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://cjlucas85.github.io/categories/usability/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux Needs Better CLI Tools</title>
+      <link>https://cjlucas85.github.io/blog/linux-needs-better-cli-tools/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjlucas85.github.io/blog/linux-needs-better-cli-tools/</guid>
+      <description>A PROBLEM The Linux terminal needs better usability.
+While so much effort has been placed into the kernel, many of the subsystems and the graphical desktop environments, the operating system&amp;rsquo;s default interface is nearly vacant of user friendly tools. Even technically adept users need to consult Google or StackOverflow to answer questions that easily are typically resolved with basic graphical utilities.
+Right now, the kernel and subsystems provide many of the clues of how to get some useful things done for the user, but they have to put these together like a puzzle.</description>
+    </item>
+    
+  </channel>
+</rss>

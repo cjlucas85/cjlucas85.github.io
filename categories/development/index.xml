@@ -6,10 +6,20 @@
     <description>Recent content in Development on Chad Lucas</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 22 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cjlucas85.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Stop Creating Shell Scripts</title>
+      <link>https://cjlucas85.github.io/blog/stop-creating-shell-scripts/</link>
+      <pubDate>Mon, 27 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjlucas85.github.io/blog/stop-creating-shell-scripts/</guid>
+      <description>Shell Scripting is terrible, and you need to stop using it.
+For years, I&amp;rsquo;ve encountered a fair amount of shell scripting being used on various projects. Often shell scripting finds its away in tasks related to build systems, automated testing, source code management and similar tasks. These are all areas which well trained Software Engineers with good intentions have deemed a suitable tool for the job. They&amp;rsquo;re wrong. Instead of making things more streamline, a shell script will make things more unpredictable.</description>
+    </item>
     
     <item>
       <title>Python: Functional Short-circuit Evaluation</title>

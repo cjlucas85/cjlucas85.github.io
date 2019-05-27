@@ -6,18 +6,31 @@
     <description>Recent content on Chad Lucas</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 21 Jan 2019 20:30:00 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 27 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cjlucas85.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Project Stub</title>
-      <link>https://cjlucas85.github.io/projects/projects/</link>
-      <pubDate>Mon, 21 Jan 2019 20:30:00 -0700</pubDate>
+      <title>Stop Creating Shell Scripts</title>
+      <link>https://cjlucas85.github.io/blog/stop-creating-shell-scripts/</link>
+      <pubDate>Mon, 27 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cjlucas85.github.io/projects/projects/</guid>
-      <description>Project Stub, will be removed when projects are added.</description>
+      <guid>https://cjlucas85.github.io/blog/stop-creating-shell-scripts/</guid>
+      <description>Shell Scripting is terrible, and you need to stop using it.
+For years, I&amp;rsquo;ve encountered a fair amount of shell scripting being used on various projects. Often shell scripting finds its away in tasks related to build systems, automated testing, source code management and similar tasks. These are all areas which well trained Software Engineers with good intentions have deemed a suitable tool for the job. They&amp;rsquo;re wrong. Instead of making things more streamline, a shell script will make things more unpredictable.</description>
+    </item>
+    
+    <item>
+      <title>Console Project</title>
+      <link>https://cjlucas85.github.io/projects/console-project/</link>
+      <pubDate>Sat, 26 Jan 2019 20:30:00 -0700</pubDate>
+      
+      <guid>https://cjlucas85.github.io/projects/console-project/</guid>
+      <description>This project is a work in progress.
+Here are an unorganized list of potential improvements to the Linux terminal environment.
+PRESENTATION It might be that there are two or three different applications that are being described here. If this is the case they need to be broken up and tackled one at a time.
+Question: How will this be presented? As an application or as a &amp;ldquo;layer&amp;rdquo; for which a shell is running while the application is running?</description>
     </item>
     
     <item>
@@ -31,23 +44,14 @@ def check1(x): return x &amp;gt; 10 def check2(x): return x &amp;gt; 20 def chec
     </item>
     
     <item>
-      <title>First Post</title>
-      <link>https://cjlucas85.github.io/blog/first-post/</link>
-      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://cjlucas85.github.io/blog/first-post/</guid>
-      <description> First post. Page will be deleted once more content comes.
-Images Code #!/usr/bin/env python3 import sys import os print(sys.argv) print(os.path.getcwd())  </description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>https://cjlucas85.github.io/about/</link>
       <pubDate>Sat, 22 Aug 2015 00:00:00 +0000</pubDate>
       
       <guid>https://cjlucas85.github.io/about/</guid>
-      <description>With this theme, it is possible to add small sections that only contains one page like this. It will automatically appears in the header, at the end.
-Along with Ford Prefect, Dent barely escapes the Earth&amp;rsquo;s destruction as it is demolished to make way for a hyperspace bypass. Arthur spends the next several years, still wearing his dressing gown, helplessly launched from crisis to crisis while trying to straighten out his lifestyle.</description>
+      <description>This page and the whole site is currently underdeveloped. I&amp;rsquo;m aiming to turn this in a place where I&amp;rsquo;ll post articles and projects related to programming, software engineering and similiar interests. In time, it will be filled with content. For now, enjoy what little I have to offer.
+As is life, it&amp;rsquo;s a work in progress.
+-cl</description>
     </item>
     
     <item>
@@ -56,8 +60,7 @@ Along with Ford Prefect, Dent barely escapes the Earth&amp;rsquo;s destruction a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cjlucas85.github.io/home/</guid>
-      <description>This is the home page. It will display the blog section if there is one, and a text before.
-Hey ! Welcome to the Cocoa Enhanced theme. Here are some articles :</description>
+      <description></description>
     </item>
     
     <item>
@@ -66,9 +69,9 @@ Hey ! Welcome to the Cocoa Enhanced theme. Here are some articles :</description
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cjlucas85.github.io/license/</guid>
-      <description>You can use this page to put a license on the contents of your blog, like so:
+      <description>Code examples on this blog is free to use under MIT; however, all else is subject to default copyright.
  The MIT License (MIT)
-Copyright &amp;copy; 2015 Nishanth Shanmughamnishanth.gerrard@gmail.com
+Copyright &amp;copy; 2019 Chad Lucas cjlucas85@gmail.com
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;ldquo;Software&amp;rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</description>
     </item>
     

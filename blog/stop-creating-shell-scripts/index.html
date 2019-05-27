@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="Chad Lucas" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cjlucas85.github.io/projects/" />
-<meta property="og:title" content="Projects" />
-<meta property="twitter:title" content="Projects">
+<meta property="og:url" content="https://cjlucas85.github.io/blog/stop-creating-shell-scripts/" />
+<meta property="og:title" content="Stop Creating Shell Scripts" />
+<meta property="twitter:title" content="Stop Creating Shell Scripts">
 
     <meta property="og:image" content="https://cjlucas85.github.io/img/banner.png">
     <meta property="twitter:card" content="summary_large_image">
@@ -28,10 +28,10 @@
 <title>
 
 
-     Chad Lucas - Projects 
+     Chad Lucas - Stop Creating Shell Scripts 
 
 </title>
-<link rel="canonical" href="https://cjlucas85.github.io/projects/">
+<link rel="canonical" href="https://cjlucas85.github.io/blog/stop-creating-shell-scripts/">
 
 
 <style media="screen">
@@ -1063,8 +1063,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="https://cjlucas85.github.io/projects/index.xml" rel="alternate" type="application/rss+xml" title="Chad Lucas" />
-
 
 </head>
 
@@ -1072,7 +1070,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1111,29 +1109,522 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+
+
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            <div class="posts">
-                <div class="page-heading">Projects</div>
-                <ul>
-                    
-                        <li class="groupby">Jan, 2019</li>
-                        
-                            <li class="post-item">
-    <span class="meta">Jan 26, 2019</span>
-    
-    <a href="https://cjlucas85.github.io/projects/console-project/"><span>Console Project</span></a>
-    
-</li>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
+    
+    Stop Creating Shell Scripts
+    
+
+</div>
+
+                </div>
+                <div class="meta">
+                    <div class="date" title="Mon May 27 2019 00:00:00 UTC">May 27, 2019</div>
+                    
                         
                     
-                </ul>
+                    
+                    <div class="reading-time middot">11 minute read</div>
+                    
+                    <div class="tags">
+                        <ul>
+                          
+                            <li class="middot"><a href="https://cjlucas85.github.io/tags/python2">python2</a> </li>
+                          
+                            <li class="middot"><a href="https://cjlucas85.github.io/tags/python3">python3</a> </li>
+                          
+                            <li class="middot"><a href="https://cjlucas85.github.io/tags/bash">bash</a> </li>
+                          
+                            <li class="middot"><a href="https://cjlucas85.github.io/tags/cmd">cmd</a> </li>
+                          
+                            <li class="middot"><a href="https://cjlucas85.github.io/tags/scripting">scripting</a> </li>
+                          
+                            <li class="middot"><a href="https://cjlucas85.github.io/tags/utilities">utilities</a> </li>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <div class="markdown">
+                
+    
+    
+
+<p>Shell Scripting is terrible, and you need to stop using it.</p>
+
+<p>For years, I&rsquo;ve encountered a fair amount of shell scripting being used on various projects. Often shell scripting finds its away in tasks related to build systems, automated testing, source code management and similar tasks. These are all areas which well trained Software Engineers with good intentions have deemed a suitable tool for the job. They&rsquo;re wrong. Instead of making things more streamline, a shell script will make things more unpredictable. It will not be portable. It will widen the scope of knowledge required to maintain the project. All of this at the price of little gain over a conventional programming language.</p>
+
+<p>In this article, I will demonstrate the problems encountered by shell scripts followed by alternatives.</p>
+
+<p>I will use MS Batch File as a demonstration for problems; although, keep in mind that BASH Script, PowerShell, and others have similar problems.</p>
+
+<h1 id="syntax-errors">Syntax Errors</h1>
+
+<p>In a general programming language, you get a fair amount of syntax checking. This syntax checking comes with it some useful tools to addressing the offending syntax error.</p>
+
+<p>You&rsquo;ll be lucky to have any of that with a Shell Script.</p>
+
+<p>Instead, a shell script is typically feeding lines into the command interpeter. Errors that occur may or may not halt the execution of the script. Sometimes, you&rsquo;ll get useful information.</p>
+
+<p>To demonstrate this, I&rsquo;ll use a simple IF ELSE script:</p>
+
+<pre><code>@echo off
+set X=10
+echo &quot;Before blocks&quot;
+if &quot;%X%&quot; == &quot;10&quot; (
+    echo &quot;X is 10&quot;
+) else (
+    echo &quot;X is not 10&quot;
+)
+echo &quot;After blocks&quot;
+</code></pre>
+
+<p>This works as expected.</p>
+
+<pre><code class="language-text">&quot;Before blocks&quot;
+&quot;X is not 10&quot;
+&quot;After blocks&quot;
+</code></pre>
+
+<p>If we alter this so that &ldquo;else&rdquo; is on its own line, the command line interpreter will treat &ldquo;else&rdquo; on it&rsquo;s own like a function, system command or application:</p>
+
+<pre><code>@echo off
+set X=10
+echo &quot;Before blocks&quot;
+if &quot;%X%&quot; == &quot;10&quot; (
+    echo &quot;X is 10&quot;
+) 
+else (
+    echo &quot;X is not 10&quot;
+)
+echo &quot;After blocks&quot;
+</code></pre>
+
+<p>In this case it happens to continue theh operation while showing noticeable signs of failure.</p>
+
+<pre><code class="language-text">&quot;Before blocks&quot;
+&quot;X is 10&quot;
+'else' is not recognized as an internal or external command,
+operable program or batch file.
+&quot;X is not 10&quot;
+&quot;After blocks&quot;
+</code></pre>
+
+<p>If the parenthesis after else is continued to the next line, the CMD.exe is able to detect this as a syntax error, and it will exit the entire script:</p>
+
+<pre><code>@echo off
+set X=10
+echo &quot;Before blocks&quot;
+if &quot;%X%&quot; == &quot;10&quot; (
+    echo &quot;X is 10&quot;
+) else 
+(
+    echo &quot;X is not 10&quot;
+)
+echo &quot;After blocks&quot;
+</code></pre>
+
+<p>In this case, a syntax error is encountered and the script exits.</p>
+
+<pre><code class="language-text">&quot;Before blocks&quot;
+The syntax of the command is incorrect.
+</code></pre>
+
+<p>There are two conclusions from this example:</p>
+
+<ol>
+<li>Syntax Errors sometimes exit, sometimes continue.</li>
+<li>Syntax is very strict.</li>
+</ol>
+
+<p>This combination makes Shell Scripting tedius. Without printing, how were we to determine whether the IF ELSE was constructed properly? It&rsquo;s one thing to have strict syntax, it&rsquo;s another for the shell to not have predicable methods for syntax errors. With shell scripting languages such as BASH, the line number may be printed along with a helpful message, but that is if the shell catches it and doesn&rsquo;t try to interpret it as something else.</p>
+
+<p>Unpredictable outcomes are not just a matter of syntax but also runtime errors.</p>
+
+<h1 id="runtime-errors">Runtime Errors</h1>
+
+<p>Modern programming languages are equiped with exception handling or other error handling mechanisms. Often these are errors which will indicate to other parts of the code that an operation could not be completed. If this failure isn&rsquo;t checked, it may even halt the program all together. When this occurs a useful text with a description of the error and a trail of function calls are listed. This is often called a stack trace. An alternative to using a stack trace is using a debugger. Debuggers typically run or run along side of the program. They give useful information about the state of the application along with errors encountered.</p>
+
+<p>You&rsquo;ll be lucky if the script exits on errors or reports line numbers.</p>
+
+<p>Instead, errors will be ignored by default. The reason is because Shell Scripting is essentially the process of calling other applications with a few built-in shell commands mixed together. The interface between applications and thet shell is either through streams (stdout &amp; stderr) and return codes. Since text streams can be hard to parse for errors, the most reliable method of determining successful execution of a program is through the return code. This means the caller, the script, must check the values that are returned by the callee, the application the script calls.</p>
+
+<p>I&rsquo;ll demonstrate the problem with a simple script. It will contain a routine called &ldquo;my_func&rdquo; which takes two paraeters and prints them to the screen. The script will call &ldquo;my_func&rdquo; twice with a different pair of parameters:</p>
+
+<pre><code>@echo off
+call :my_func, &quot;A&quot;, &quot;B&quot;
+call :my_func, &quot;C&quot;, &quot;D&quot;
+exit /B %ERRORLEVEL%
+
+:my_func
+echo %~1 %~2
+EXIT /B 0
+</code></pre>
+
+<p>This will produce the following output.</p>
+
+<pre><code class="language-text">A B
+C D
+</code></pre>
+
+<p>Now, let&rsquo;s throw a wrench at this by adding &ldquo;create_problem_here&rdquo; in our function:</p>
+
+<pre><code>@echo off
+call :my_func, &quot;A&quot;, &quot;B&quot;
+call :my_func, &quot;C&quot;, &quot;D&quot;
+exit /B %ERRORLEVEL%
+
+:my_func
+echo %~1 %~2
+create_problem_here
+EXIT /B 0
+</code></pre>
+
+<p>And when we run this:</p>
+
+<pre><code class="language-text">A B
+'create_problem_here' is not recognized as an internal or external command,
+operable program or batch file.
+C D
+'create_problem_here' is not recognized as an internal or external command,
+operable program or batch file.
+</code></pre>
+
+<p>Here we see the problem encountered twice, and yet the application continued to run. This is because CMD.exe places the return code in the variable &ldquo;errorlevel&rdquo; and leaves checking the status to the script to handle. Alternatively, shell commands can be given logical AND and logical OR operations. These operations can provide some error checking and mitigation. We can fix the code to give us something close to what we expect; exit on first error of &ldquo;create_problem_here&rdquo;:</p>
+
+<pre><code>@echo off
+call :my_func, &quot;A&quot;, &quot;B&quot;
+call :my_func, &quot;C&quot;, &quot;D&quot;
+exit /B %ERRORLEVEL%
+
+:my_func
+echo %~1 %~2
+create_problem_here || echo whoops! &amp;&amp; call :halt
+EXIT /B 0
+
+:halt
+call :haltHelper 2&gt; nul
+
+:haltHelper
+() 
+exit /b
+</code></pre>
+
+<p>Here we use some short circuit evaluation. If &ldquo;create_problem_here&rdquo; does not execute successfully, it will print &ldquo;whoops!&rdquo; and halt the program; otherwise, it will continue.</p>
+
+<p>Since &ldquo;create_problem_here&rdquo; isn&rsquo;t an internal or external command, we get the following:</p>
+
+<pre><code class="language-text">A B
+'create_problem_here' is not recognized as an internal or external command,
+operable program or batch file.
+whoops!
+</code></pre>
+
+<p>While it appears we&rsquo;ve solved a problem, we&rsquo;ve actually exposed another. We checked the one line for an error; however, all other lines have not been checked. This creates a dilemma and huge gap for determination. The delimma presented is where to check for errors. Naturally, you can be pedantic and check everything for errors, but this will pad the code with a litany of checks. On the otherhand, you could just check code that is critical for success; afterall, some builtin commands like echo will not likely fail or fail critical to the rest to other operations. If errors are left unchecked, the script potentially becomes indeterminant. Scripts often rely on certain state to be in the right place. This can be in the form of the present working directory, files, folders, environment variables, and even commands available on the system. If any of these things are missing or modified in a way that wasn&rsquo;t anticipated, the script&rsquo;s execution is going to be misaligned and faulty. This leads to unpredictable behavior.</p>
+
+<p>This means that scripts must be written in a pedantic fashion to account for the multiple failure points; however, Shell Scripts are rarely engineered. Frequently, a shell script is cobbled together from a set of commands that worked, and they have been placed into a file for reuse. It&rsquo;s often a distant afterthought to include any error handling.</p>
+
+<p>The following chart illustrates how most shell scripting compares to similar programming languages.</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Batch File</th>
+<th>PowerShell</th>
+<th>BASH</th>
+<th>Python</th>
+<th>Ruby</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Exit On Any Error</td>
+<td>NO</td>
+<td>NO</td>
+<td>OPT</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+
+<tr>
+<td>Prints Error Line</td>
+<td>NO</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+
+<tr>
+<td>Prints Error File</td>
+<td>NO</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+
+<tr>
+<td>Stack Trace</td>
+<td>NO</td>
+<td>OPT</td>
+<td>OPT</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="portability">Portability</h1>
+
+<p>Portability is often a goal which is desired when needed, and it is seldom considered at the start of development. When it comes to the portability of shell scripts and interpreted programming languages, there are two concerns: which platforms is it installed on and is it available by default?</p>
+
+<p>The following charts are of shell scripting and interpreted languages and their platform availability. YES indicates the language is available by default. OPT means the language can be installed on the system. NO means there is no availability.</p>
+
+<h3 id="shell-scripting-languages">Shell Scripting Languages</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Batch File</th>
+<th>PowerShell</th>
+<th>SH</th>
+<th>BASH</th>
+<th>TCSH</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Windows 10</td>
+<td>YES</td>
+<td>YES</td>
+<td>OPT</td>
+<td>OPT</td>
+<td>OPT</td>
+</tr>
+
+<tr>
+<td>macOS 10.14</td>
+<td>NO</td>
+<td>OPT</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+
+<tr>
+<td>Ubuntu 18.04</td>
+<td>NO</td>
+<td>OPT</td>
+<td>YES</td>
+<td>YES</td>
+<td>OPT</td>
+</tr>
+
+<tr>
+<td>RHEL 7.5</td>
+<td>NO</td>
+<td>OPT</td>
+<td>YES</td>
+<td>YES</td>
+<td>OPT</td>
+</tr>
+
+<tr>
+<td>FreeBSD 12</td>
+<td>NO</td>
+<td>NO</td>
+<td>YES</td>
+<td>OPT</td>
+<td>YES</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="programming-languages">Programming Languages</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Python 2</th>
+<th>Python 3</th>
+<th>Ruby 2</th>
+<th>Lua</th>
+<th>NIM</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Windows 10</td>
+<td>OPT</td>
+<td>OPT</td>
+<td>OPT</td>
+<td>OPT</td>
+<td>OPT</td>
+</tr>
+
+<tr>
+<td>macOS 10.14</td>
+<td>YES</td>
+<td>OPT</td>
+<td>YES</td>
+<td>OPT</td>
+<td>OPT</td>
+</tr>
+
+<tr>
+<td>Ubuntu 18.04</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>OPT</td>
+<td>OPT</td>
+</tr>
+
+<tr>
+<td>RHEL 7.5</td>
+<td>OPT</td>
+<td>YES</td>
+<td>OPT</td>
+<td>OPT</td>
+<td>OPT</td>
+</tr>
+
+<tr>
+<td>FreeBSD 12</td>
+<td>OPT</td>
+<td>OPT</td>
+<td>OPT</td>
+<td>OPT</td>
+<td>OPT</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="why-do-developers-choose-shell-scripts">Why Do Developers Choose Shell Scripts?</h1>
+
+<p>Before any solutions can be presented, we need to discuss what motivations developers have for using shell scripts.</p>
+
+<h2 id="mostly">Mostly</h2>
+
+<p>Simply put, developers often form shell scripts from the commands they invoke on the command line to get tasks done. The simplest solution to recreating that success and using it over and over again is to pack that into a shell script file. This is why it&rsquo;s not as simple as saying &ldquo;Use a general programming language.&rdquo;</p>
+
+<p>I&rsquo;ll illustrate this by making a script which will check out a project and compile it. If the project already exists, it will delete the directory before checking out. Try not to over think why we might want this, concentrate on the idea that there are potential failure points in the implementation. Naturally the composition of commands will look like this:</p>
+
+<pre><code class="language-s">rm -rf project
+svn co svn://svn.company.com/project
+cd project
+make
+cd ..
+</code></pre>
+
+<p>Naturally this can be packed into a shell script without any motification. This application looks much different in Python. The following is a simplistic conversion of the same tasks:</p>
+
+<pre><code class="language-python">import os
+os.system('rm -rf project')
+os.system('svn co svn://svn.company.com/project')
+os.chdir('project')
+os.system('make')
+os.chdir('..')
+</code></pre>
+
+<p>This required one more line and more typing, but did we gain anything from it? Well, actually there is at least one perk. The call to &ldquo;os.chdir(&lsquo;project&rsquo;)&rdquo; will raise an exception if it cannot change directory whereas the script above will continue execution (unless the shell provides exit on error). In fact, the more &ldquo;os.system&rdquo; calls are converted into Python equivilents, the more error checking is provided. Let&rsquo;s put a bit more care into this script:</p>
+
+<pre><code class="language-python">import os
+import sys
+cwd = os.getcwd()
+# REMOVE PROJECT IF IT EXISTS
+try:
+    os.rmdir('project')
+except FileNotFoundError:
+    pass
+# CHECK OUT PROJECT
+if os.system('svn co svn://svn.company.com/project') != 0:
+    print('Could not check out repository', file=sys.stderr)
+    sys.exit(1)
+# ENTER PROJECT DIRECTORY
+os.chdir('project')
+# MAKE PROJECT
+if os.system('make') != 0:
+    print('Compile Failed', file=sys.stderr)
+    os.chdir(cwd)
+    sys.exit(1)
+# RETURN TO ORIGINAL DIRECTORY
+os.chdir(cwd)
+</code></pre>
+
+<p>Admittedly, this is lengthy. It required more consideration. It&rsquo;s not likely the first solution someone would use to approach this problem. However, this is far more reliable than the first script presented. Error checking is done for things we anticipate. Exceptions will raise for the errors we didn&rsquo;t anticipate. If the choice is to be made of which script is to be used for long term development, it&rsquo;s clear which oneshould be used.</p>
+
+<p>What does this all mean?</p>
+
+<p>Using shell scripting is often a path of convenience. Switching languages may provide error checking without much effort; however, propper error checking will require some careful consideration and effort.</p>
+
+<h2 id="sometimes">Sometimes</h2>
+
+<p>At times there isn&rsquo;t any choice in the matter.</p>
+
+<p><strong>Evironment Restrictions</strong>: Certain things are not available because of the scope of the system or the environment. When installing a program on Windows, the only scripting languages you can rely on are MS Batch File, VBScript and PowerShell. Linux will at least have <em>/bin/sh</em> available on even the most minimalistic distribution, and it may be your project&rsquo;s peragative to keep the OS installation image small.</p>
+
+<p><strong>Organizational Restrictions</strong>: Individuals in the organization do not want languages they are not famailiar with populating their poject.</p>
+
+<p>When you can use an alternative to shell scripts; use it.</p>
+
+<h1 id="alternatives">Alternatives</h1>
+
+<p><strong>Python</strong> and <strong>Ruby</strong> are natural alternatives to shell scripting. Both are easy to learn, have support from a plethera of third party modules, and their communities are large. Chances are if you&rsquo;re apart of a project, there may already exist a bias toward using either one. If that&rsquo;s the case, that is the path toward replacing shell scripts from the project. Otherwise, my recommendation is to use <strong>Python</strong>. Python has slightly more reach with utilities and application development than Ruby, and the language isn&rsquo;t typecast to a single framework.</p>
+
+
+            </div>
+            
+            <br>
+            <div class="share">
+                  
+                  <a href="" class="ssk ssk-facebook"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-twitter"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-google-plus"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-linkedin"></a>
+                  
+            </div>
+            
+            
+            
+
+            
+
+            
         </div>
     </div>
 </div>
+
+
+
 <div class="footer column">
     <div class="container">
 
